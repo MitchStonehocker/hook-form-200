@@ -1,5 +1,37 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Overview
+
+This uses React hooks exclusivly to achive maximum code seperation of functions by generation of custom hooks. These custom hooks are reusable across components in an app. The custom hooks (most of them I think) are generalized for immediate use in other apps. These hooks are:
+
+- useStyles - (Material_UI themes and styles)
+- useInput - manages:
+  {
+  props: {
+  name,
+  value,
+  onChange: handleChange,
+  onBlur: handleBlur,
+  error
+  },
+  validate: handleValidate
+  }
+- useSubmit - manages:
+  {
+  props: {
+  onSubmit: handleSubmit
+  },
+  errorItems
+  }
+- Regex validation of all input controls on a form
+- Other 'utility' hooks:
+  - useDater - displays the current date (to the day)
+  - useMouse - displays the mouse position
+  - useTimer - display the current time (to the second)
+  - useWindow - displays the size of window
+
+There is not global state maangement in this project.
+
 ## Available Scripts
 
 In the project directory, you can run:
