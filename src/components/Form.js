@@ -50,14 +50,15 @@ export default function Form () {
     return false
   }
 
+  // (label, defaultValue, function, regex)
   const email = useInput('Email', '', handleValidation, validations.EMAIL)
   const quantity = useInput(
     'Quantity',
     '',
     handleValidation,
-    validations.INTEGER
+    validations.INTEGER_GE0
   )
-  const price = useInput('Price', '', handleValidation, validations.REAL)
+  const price = useInput('Price', '', handleValidation, validations.REAL_GE0)
   const stateArbv = useInput(
     'USA State',
     '',
@@ -165,7 +166,17 @@ export default function Form () {
             </FormControl>
           </div>
 
-          <Button type='submit' color='primary' variant='contained'>
+          <Button
+            type='submit'
+            color='primary'
+            variant='contained'
+            disabled={
+              !email.props.value ||
+              !quantity.props.value ||
+              !price.props.value ||
+              !stateArbv.props.value
+            }
+          >
             Submit
           </Button>
           {submit.errorItems && submit.errorItems.length > 0 && (
